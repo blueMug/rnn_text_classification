@@ -1,4 +1,5 @@
 import pickle
+import os
 
 
 def read_txt(filename):
@@ -24,6 +25,9 @@ def save_to_txt(filename, content):
 
 
 def save_to_pickle(filename, content):
+    dir_path = os.path.dirname(filename)
+    if not os.path.exists(dir_path):
+        os.makedirs(dir_path)
     with open(filename, 'wb') as f:
         pickle.dump(content, f)
 
